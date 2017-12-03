@@ -1,21 +1,21 @@
 cd $(dirname $0)
-cd ../initial
+#cd ../initial
 
-mvn clean compile
-ret=$?
-if [ $ret -ne 0 ]; then
-exit $ret
-fi
-rm -rf target
+#mvn clean compile
+#ret=$?
+#if [ $ret -ne 0 ]; then
+#exit $ret
+#fi
+#rm -rf target
 
-./gradlew compileJava
-ret=$?
-if [ $ret -ne 0 ]; then
-exit $ret
-fi
-rm -rf build
+#./gradlew compileJava
+#ret=$?
+#if [ $ret -ne 0 ]; then
+"exit $ret
+"fi
+"rm -rf build
 
-cd ../complete
+#cd ../complete
 mvn clean package
 
 # if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; 
