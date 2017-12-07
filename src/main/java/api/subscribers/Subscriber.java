@@ -19,18 +19,18 @@ public class Subscriber {
     private int facebook_id;
 
     @NotBlank
-    private int user_type;
+    private int age_group;
 
     public Subscriber() {
         id = null;
         facebook_id = 0;
-        user_type = 0;
+        age_group = 0;
     }
 
-    public Subscriber(Long id, int fb, int ut) {
+    public Subscriber(Long id, int fb, int ag) {
         this.id = id;
         this.facebook_id = fb;
-        this.user_type = ut;
+        this.age_group = ag;
     }
 
     public Long getId() {
@@ -50,10 +50,10 @@ public class Subscriber {
     }
 
     public int getUser_type() {
-        return user_type;
+        return age_group;
     }
 
-    public void setUser_type(int user_type) {
-        this.user_type = user_type;
+    public void setUser_type(int age_group) {
+        this.age_group = age_group;
     }
 }
