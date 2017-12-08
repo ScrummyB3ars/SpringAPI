@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class SubscriberController {
     @Autowired
     private SubscriberRepository sr;
-    private static final String template = "Hello from hello.subscribers, %s!";
+    private static final String template = "Hello from api.subscribers, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(value= "/subscribers", method= RequestMethod.GET)
