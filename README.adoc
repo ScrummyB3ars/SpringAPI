@@ -1,5 +1,5 @@
 ---
-image:[![Build Status](https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master)](https://travis-ci.org/ScrummyB3ars/spring-api)
+image:https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master
 ---
 :spring_version: current
 :toc:
