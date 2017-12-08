@@ -1,5 +1,5 @@
 ---
-https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master
+
 ---
 :spring_version: current
 :toc:
@@ -17,6 +17,8 @@ You'll build a service that will accept HTTP GET requests at:
 
 ----
 http://localhost:8080/greeting
+
+https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master
 ----
 
 and respond with a link:/understanding/JSON[JSON] representation of a greeting:
