@@ -49,11 +49,11 @@ public class Subscriber {
         this.id = id;
     }
 
-    public int getUser_type() {
+    public int getAge_group() {
         return age_group;
     }
 
-    public void setUser_type(int age_group) {
+    public void setAge_group(int age_group) {
         this.age_group = age_group;
     }
 }
