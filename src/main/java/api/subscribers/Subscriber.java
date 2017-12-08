@@ -1,6 +1,5 @@
 package api.subscribers;
 
-import javafx.beans.DefaultProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
