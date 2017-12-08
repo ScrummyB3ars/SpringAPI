@@ -1,6 +1,6 @@
----
-image:https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master
----
+
+= image:https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master["Build Status", link="https://travis-ci.org/ScrummyB3ars/spring-api"]
+
 :spring_version: current
 :toc:
 :project_id: gs-rest-service
