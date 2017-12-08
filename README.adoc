@@ -1,7 +1,5 @@
 ---
-tags: [rest]
-projects: [spring-framework]
-experimental: Try the code inside your browser with -> http://beta.codenvy.com/f?id=9fq0busbm3tz7i8c
+https://travis-ci.org/ScrummyB3ars/spring-api.svg?branch=master
 ---
 :spring_version: current
 :toc:
