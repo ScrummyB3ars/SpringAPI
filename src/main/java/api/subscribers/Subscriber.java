@@ -1,6 +1,6 @@
 package api.subscribers;
 
-import org.hibernate.annotations.Table;
+import javafx.beans.DefaultProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
@@ -16,32 +16,32 @@ public class Subscriber {
     private Long id;
 
     @NotBlank
-    private int facebook_id;
+    private String facebook_id;
 
-    @NotBlank
-    private int age_group;
+
+    private Integer age_group_id;
 
     public Subscriber() {
         id = null;
-        facebook_id = 0;
-        age_group = 0;
+        facebook_id = null;
+        age_group_id = 0;
     }
 
-    public Subscriber(Long id, int fb, int ag) {
+    public Subscriber(Long id, String fb, int ag) {
         this.id = id;
         this.facebook_id = fb;
-        this.age_group = ag;
+        this.age_group_id = ag;
     }
 
     public Long getId() {
         return id;
     }
 
-    public int getFacebook_id() {
+    public String getFacebook_id() {
         return facebook_id;
     }
 
-    public void setFacebook_id(int facebook_id) {
+    public void setFacebook_id(String facebook_id) {
         this.facebook_id = facebook_id;
     }
 
@@ -49,11 +49,11 @@ public class Subscriber {
         this.id = id;
     }
 
-    public int getAge_group() {
-        return age_group;
+    public int getAge_group_id() {
+        return age_group_id;
     }
 
-    public void setAge_group(int age_group) {
-        this.age_group = age_group;
+    public void setAge_group_id(int age_group_id) {
+        this.age_group_id = age_group_id;
     }
 }
