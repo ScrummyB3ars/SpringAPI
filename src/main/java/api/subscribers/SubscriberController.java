@@ -37,7 +37,7 @@ public class SubscriberController {
         try{
             Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), payload.getAge_group_id());
             sr.save(s);
-            return new ResponseEntity(HttpStatus.CREATED);
+            return new ResponseEntity(s, HttpStatus.CREATED);
         }
         catch (Exception e) {
             return ErrorController.ApiError(e);
