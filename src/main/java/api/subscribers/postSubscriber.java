@@ -2,7 +2,7 @@ package api.subscribers;
 
 public class postSubscriber {
     private String facebook_id;
-    private Integer age_group;
+    private Integer age_group_id;
 
     public String getFacebook_id() {
         return facebook_id;
@@ -12,12 +12,12 @@ public class postSubscriber {
         this.facebook_id = facebook_id;
     }
 
-    public Integer getAge_group() {
-        return age_group;
+    public Integer getAge_group_id() {
+        return age_group_id;
     }
 
-    public void setAge_group(Integer age_group) {
-        this.age_group = age_group;
+    public void setAge_group_id(Integer age_group) {
+        this.age_group_id = age_group;
     }
 
 
