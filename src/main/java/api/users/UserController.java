@@ -1,6 +1,6 @@
-package api.Users;
+package api.users;
 
-import api.Error.ErrorController;
+import api.error.ErrorController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.http.HttpStatus;

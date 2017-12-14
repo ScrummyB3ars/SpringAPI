@@ -1,4 +1,4 @@
-package api.Users;
+package api.users;
 
 import org.hibernate.validator.constraints.NotBlank;
 
