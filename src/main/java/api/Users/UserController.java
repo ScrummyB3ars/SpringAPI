@@ -1,4 +1,4 @@
-package api.users;
+package api.Users;
 
 import api.Error.ErrorController;
 import api.Users.UserRepository;
@@ -19,26 +19,20 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-public class SubscriberController {
+public class UserController {
     @Autowired
     private UserRepository ur;
 
-    @RequestMapping(value= "/subscribers", method= RequestMethod.GET)
-    public Iterable<Subscriber> getSubscribers() {
-        return sr.findAll();
-    }
-
-    @RequestMapping(value="**",method = RequestMethod.GET)
-    public String getAnythingelse(){
-        return "Welcome to the toddlr-api.";
+    @RequestMapping(value= "/users", method= RequestMethod.GET)
+    public Iterable<User> getUsers() {
+        return ur.findAll();
     }
 
     @RequestMapping(value="/addSubscriber", method = RequestMethod.POST)
-    public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
+    public ResponseEntity postSubscriber(@RequestBody postUser payload){
         try {
-            Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), (payload.getAge_group()));
-            sr.save(s);
-            return new ResponseEntity(s,HttpStatus.CREATED);
+            //todo save user
+            return new ResponseEntity(HttpStatus.CREATED);
         }
         catch (Exception e) {
             return ErrorController.ApiError(e);
@@ -48,14 +42,15 @@ public class SubscriberController {
     @RequestMapping(value="/deleteSubscriber", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubscriber(@RequestBody String body) throws IOException {
 
-        try{
+        /*try{
             String s = (new ObjectMapper().readTree(body).findValue("facebook_id")+"").replace('"', ' ').trim();
             sr.deleteWithFacebook_id(s);
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch (Exception e) {
             return ErrorController.ApiError(e);
-        }
+        }*/
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 

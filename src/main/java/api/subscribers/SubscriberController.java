@@ -35,7 +35,7 @@ public class SubscriberController {
     @RequestMapping(value="/addSubscriber", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
         try {
-            Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), (payload.getAge_group()));
+            Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), (payload.getAge_group_id()));
             sr.save(s);
             return new ResponseEntity(s,HttpStatus.CREATED);
         }
