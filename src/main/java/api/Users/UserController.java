@@ -20,6 +20,11 @@ public class UserController {
         return ur.findAll();
     }
 
+    @RequestMapping(value = "/users/{id}")
+    public ResponseEntity getSingleUserById (@PathVariable("id") int id) {
+        return new ResponseEntity(ur.findUserById(id), HttpStatus.OK );
+    }
+
     @RequestMapping(value="/users/add", method = RequestMethod.POST)
     public ResponseEntity postUser(@RequestBody postUser payload){
        // try {

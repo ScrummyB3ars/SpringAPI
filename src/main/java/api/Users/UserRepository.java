@@ -19,4 +19,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Modifying
     @Query(value="DELETE FROM User where email = :s")
     void deleteWithEmail(@Param("s") String s);
+
+    @Query(value="SELECT * from users where id = :id limit 1", nativeQuery = true)
+    User findUserById(@Param("id") int id);
 }

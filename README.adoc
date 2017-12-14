@@ -7,7 +7,7 @@ This is the api used in the toddlr-project, it handles all the database requests
 
 == Available requests
 
-=== Subscribers
+== Subscribers (Facebook-client)
 
 ==== GET-request
 
@@ -64,4 +64,59 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpRespone ACCEPTED if succesful.
 
+== Users (Email-client)
 
+==== GET-request
+
+----
+https://api-toddlr.herokuapp.com/users
+----
+
+and responds with a link:/understanding/JSON[JSON] representation of all the subscribers:
+
+[source,json]
+----
+[{"id":0,"email":"e.mail@server.github","password":"supersecrethash","zip_code":6969,"role_id":0,"username":"user.name"},
+{"id":1,"email":"e.mail@server.github","password":"supersecrethash","zip_code":6969,"role_id":0,"username":"user.name"},
+----
+
+You can also get the data of a single user by adding its username to the path of the request
+
+----
+https://api-toddlr.herokuapp.com/users/{username}
+----
+
+==== POST-request
+
+You can POST a new user and add it to the db via
+
+----
+https://api-toddlr.herokuapp.com/users/add
+----
+
+This request expects a POST-request with Content-type: application/json and the following json-body
+
+[source,json]
+----
+{"username":"user.name","email": "e.mail@server.github", "zip_code": 6969}
+----
+
+It will return the new subscriber object in it's response body if the request was successful.
+
+
+==== DELETE-request
+
+You can DELETE a new via
+
+----
+https://api-toddlr.herokuapp.com/users/delete
+----
+
+This request expects a DELETE-request with Content-type: application/json and the following json-body
+
+[source,json]
+----
+{"facebook_id":"1325496"}
+----
+
+It will return a 201 HttpRespone ACCEPTED if succesful.
