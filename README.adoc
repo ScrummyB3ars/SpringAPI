@@ -121,4 +121,46 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpResponse ACCEPTED if successful.
 
+=== Tips
 
+Two different kind of tips: interaction_tips and theme_tips
+
+GET a random tip
+
+----
+https://api-toddlr.herokuapp.com/interaction_tips/random
+https://api-toddlr.herokuapp.com/theme_tips/random
+----
+
+This returns a json-object as the following:
+
+[source, json]
+----
+==== Interaction Tip
+{
+  "id": 14,
+  "tip_content": "Geef kleuters ruim de tijd om te vertellen wat ze willen.",
+  "add_rich_language": 0,
+  "type_id": 1
+}
+
+==== Theme Tip
+{
+  "id": 12,
+  "picture": "schaduw_2",
+  "tip_content": "Schijnt de zon door het raam? Laat kleuters hun schaduw zoeken. Hoe maak je die?",
+  "rich_language": "null",
+  "circumstances": "zonnig",
+  "development_goal": "WT OD 1.8. Kleuters kunnen verschillende weersomstandigheden waarnemen, vergelijken en benoemen en voorbeelden geven van de gevolgen voor zichzelf.",
+  "themes_id": 0,
+  "age_group_id": 0,
+  "zill_goal": "OWNA 8 Natuurlijke verschijnselen en gangbare materialen waarnemen, onderzoeken en herkennen in de omgeving"
+}
+----
+
+You can the whole list of tips by doing a GET-request to the following urls
+
+----
+http://api-toddlr.herokuapp.com/interaction_tips
+http://api-toddlr.herokuapp.com/theme_tips
+----
