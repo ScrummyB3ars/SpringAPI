@@ -20,20 +20,26 @@ public class UserController {
         return ur.findAll();
     }
 
-    @RequestMapping(value="/users/post", method = RequestMethod.POST)
+    @RequestMapping(value="/users/add", method = RequestMethod.POST)
     public ResponseEntity postUser(@RequestBody postUser payload){
-        try {
-            //todo save user
-            return new ResponseEntity(HttpStatus.CREATED);
-        }
+       // try {
+            User u = new User();
+            u.setEmail(payload.getEmail());
+            u.setRole_id(0);
+            u.setPassword(null);
+            u.setZip_code(payload.getZip_code());
+            u.setUsername(payload.getUsername());
+            u.setId(new Long(ur.findHighestId())+1);
+            ur.save(u);
+            return  new ResponseEntity(u, HttpStatus.CREATED);
+        /*}
         catch (Exception e) {
             return ErrorController.ApiError(e);
-        }
+        }*/
     }
 
     @RequestMapping(value="/users/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteUser(@RequestBody String body) throws IOException {
-
         try{
             String s = (new ObjectMapper().readTree(body).findValue("email")+"").replace('"', ' ').trim();
             ur.deleteWithEmail(s);
