@@ -23,8 +23,8 @@ public class SubscriberController {
     private SubscriberRepository sr;
 
     @RequestMapping(value= "/subscribers", method= RequestMethod.GET)
-    public Iterable<Subscriber> getSubscribers() {
-        return sr.findAll();
+    public ResponseEntity getSubscribers() {
+        return new ResponseEntity(sr.findAll(), HttpStatus.OK);
     }
 
     @RequestMapping(value="**",method = RequestMethod.GET)
@@ -34,19 +34,19 @@ public class SubscriberController {
 
     @RequestMapping(value="/addSubscriber", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
-        try {
-            Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), (payload.getAge_group_id()));
+        try{
+            Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), payload.getAge_group_id());
             sr.save(s);
-            return new ResponseEntity(s,HttpStatus.CREATED);
+            return new ResponseEntity(HttpStatus.CREATED);
         }
         catch (Exception e) {
             return ErrorController.ApiError(e);
         }
+
     }
 
     @RequestMapping(value="/deleteSubscriber", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubscriber(@RequestBody String body) throws IOException {
-
         try{
             String s = (new ObjectMapper().readTree(body).findValue("facebook_id")+"").replace('"', ' ').trim();
             sr.deleteWithFacebook_id(s);

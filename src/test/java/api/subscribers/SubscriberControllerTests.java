@@ -39,7 +39,7 @@ public class SubscriberControllerTests {
     @Test
     public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
-        this.mockMvc.perform(get("/sub")).andDo(print()).andExpect(status().isOk());
+        this.mockMvc.perform(get("/subscribers")).andDo(print()).andExpect(status().isOk());
     }
 
     /*@Test
