@@ -13,7 +13,7 @@ import java.io.InputStream;
 @RestController
 public class ImagesController {
     @RequestMapping(
-            value = "/image/{picture_name}",
+            value = "/images/{picture_name}",
             produces = MediaType.IMAGE_JPEG_VALUE
     )
     public @ResponseBody byte[] getImageWithMediaType(@PathVariable("picture_name") String pn) throws IOException {
