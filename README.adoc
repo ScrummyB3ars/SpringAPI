@@ -116,7 +116,7 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 [source,json]
 ----
-{"id":"1325496"}
+{"id": 16}
 ----
 
 It will return a 201 HttpRespone ACCEPTED if succesful.
