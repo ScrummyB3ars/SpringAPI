@@ -32,7 +32,7 @@ public class SubscriberController {
         return new ResponseEntity("Welcome to the toddlr-api.", HttpStatus.OK);
     }
 
-    @RequestMapping(value="/addSubscriber", method = RequestMethod.POST)
+    @RequestMapping(value="/subscribers/add", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
         try{
             Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), payload.getAge_group_id());
@@ -45,7 +45,7 @@ public class SubscriberController {
 
     }
 
-    @RequestMapping(value="/deleteSubscriber", method = RequestMethod.DELETE)
+    @RequestMapping(value="/subscribers/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubscriber(@RequestBody String body) throws IOException {
         try{
             String s = (new ObjectMapper().readTree(body).findValue("facebook_id")+"").replace('"', ' ').trim();
