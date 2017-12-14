@@ -32,6 +32,10 @@ public class SubscriberController {
         return new ResponseEntity("Welcome to the toddlr-api.", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/subscribers/{facebook_id}")
+    public ResponseEntity getSingleSubscriber (@PathVariable("facebook_id") int fb_id) {
+        return new ResponseEntity(sr.findSubscriberByFacebook_id(fb_id), HttpStatus.OK );
+    }
     @RequestMapping(value="/subscribers/add", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
         try{
@@ -42,9 +46,7 @@ public class SubscriberController {
         catch (Exception e) {
             return ErrorController.ApiError(e);
         }
-
     }
-
     @RequestMapping(value="/subscribers/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubscriber(@RequestBody String body) throws IOException {
         try{
