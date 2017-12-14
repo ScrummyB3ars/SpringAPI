@@ -1,5 +1,6 @@
 package api.subscribers;
 
+import api.Error.ErrorController;
 import api.subscribers.Subscriber;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.coyote.Request;
@@ -26,17 +27,6 @@ public class SubscriberController {
         return sr.findAll();
     }
 
-    @RequestMapping(value= "/sub", method= RequestMethod.GET)
-    public Subscriber getSubscriber() {
-        Long l = new Long(1);
-        return new Subscriber(l,"258", 1);
-    }
-
-    @RequestMapping(value= "/test", method= RequestMethod.GET)
-    public String test() {
-        return "test success";
-    }
-
     @RequestMapping(value="**",method = RequestMethod.GET)
     public String getAnythingelse(){
         return "Welcome to the toddlr-api.";
@@ -44,17 +34,27 @@ public class SubscriberController {
 
     @RequestMapping(value="/addSubscriber", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
-        Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), Integer.parseInt(payload.getAge_group()));
-        sr.save(s);
-        return new ResponseEntity(HttpStatus.CREATED);
+        try {
+            Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), Integer.parseInt(payload.getAge_group()));
+            sr.save(s);
+            return new ResponseEntity(s,HttpStatus.CREATED);
+        }
+        catch (Exception e) {
+            return ErrorController.ApiError(e);
+        }
     }
 
     @RequestMapping(value="/deleteSubscriber", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubscriber(@RequestBody String body) throws IOException {
-        String s = (new ObjectMapper().readTree(body).findValue("facebook_id")+"").replace('"', ' ').trim();
-        sr.deleteWithFacebook_id(s);
-        return new ResponseEntity(HttpStatus.ACCEPTED);
 
+        try{
+            String s = (new ObjectMapper().readTree(body).findValue("facebook_id")+"").replace('"', ' ').trim();
+            sr.deleteWithFacebook_id(s);
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch (Exception e) {
+            return ErrorController.ApiError(e);
+        }
     }
 
 
