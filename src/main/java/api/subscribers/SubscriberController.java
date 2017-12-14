@@ -28,8 +28,8 @@ public class SubscriberController {
     }
 
     @RequestMapping(value="**",method = RequestMethod.GET)
-    public String getAnythingelse(){
-        return "Welcome to the toddlr-api.";
+    public ResponseEntity getAnythingelse(){
+        return new ResponseEntity("Welcome to the toddlr-api.", HttpStatus.OK);
     }
 
     @RequestMapping(value="/addSubscriber", method = RequestMethod.POST)
