@@ -5,5 +5,8 @@ public class postUser {
     private String email;
     private Integer zip_code;
 
+    public postUser() {
+    }
+
 
 }
