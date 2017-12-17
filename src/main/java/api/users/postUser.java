@@ -1,4 +1,4 @@
-package api.Users;
+package api.users;
 
 public class postUser {
     private String username;

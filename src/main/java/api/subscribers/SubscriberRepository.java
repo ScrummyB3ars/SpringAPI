@@ -17,6 +17,9 @@ public interface SubscriberRepository extends CrudRepository<Subscriber, Long> {
 
     @Transactional
     @Modifying
-    @Query(value="DELETE FROM Subscriber where facebook_id = :s")
-    void deleteWithFacebook_id(@Param("s") String s);
+    @Query(value="DELETE FROM Subscriber where facebook_id = :fb_id")
+    void deleteWithFacebook_id(@Param("fb_id") String fb_id);
+
+    @Query(value="SELECT * from subscribers where facebook_id = :fb_id limit 1", nativeQuery = true)
+    Subscriber findSubscriberByFacebook_id(@Param("fb_id") int fb_id);
 }

@@ -1,21 +1,14 @@
 package api.subscribers;
 
-import api.Error.ErrorController;
-import api.subscribers.Subscriber;
+import api.error.ErrorController;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.coyote.Request;
-import org.apache.coyote.Response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.swing.text.html.HTML;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class SubscriberController {
@@ -32,6 +25,10 @@ public class SubscriberController {
         return new ResponseEntity("Welcome to the toddlr-api.", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/subscribers/{facebook_id}")
+    public ResponseEntity getSingleSubscriber (@PathVariable("facebook_id") int fb_id) {
+        return new ResponseEntity(sr.findSubscriberByFacebook_id(fb_id), HttpStatus.OK );
+    }
     @RequestMapping(value="/subscribers/add", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
         try{
@@ -42,9 +39,7 @@ public class SubscriberController {
         catch (Exception e) {
             return ErrorController.ApiError(e);
         }
-
     }
-
     @RequestMapping(value="/subscribers/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubscriber(@RequestBody String body) throws IOException {
         try{

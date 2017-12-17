@@ -1,6 +1,6 @@
-package api.Users;
+package api.users;
 
-import api.Error.ErrorController;
+import api.error.ErrorController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,11 @@ public class UserController {
     @RequestMapping(value= "/users", method= RequestMethod.GET)
     public Iterable<User> getUsers() {
         return ur.findAll();
+    }
+
+    @RequestMapping(value = "/users/{id}")
+    public ResponseEntity getSingleUserById (@PathVariable("id") int id) {
+        return new ResponseEntity(ur.findUserById(id), HttpStatus.OK );
     }
 
     @RequestMapping(value="/users/add", method = RequestMethod.POST)
