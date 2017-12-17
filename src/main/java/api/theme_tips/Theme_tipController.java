@@ -5,12 +5,8 @@ import api.theme_tips.Theme_tip;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.context.Theme;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Random;
 
@@ -34,5 +30,11 @@ public class Theme_tipController {
         catch(Exception e){
             return ErrorController.ApiError(e);
         }
+    }
+
+    @RequestMapping(value="/theme_tips/add", method = RequestMethod.POST)
+    public int postThemeTip(@RequestBody Theme_tip tt){
+        tt.setId(new Long(ttr.findHighestId())+1);
+        return tt.getAge_group_id();
     }
 }

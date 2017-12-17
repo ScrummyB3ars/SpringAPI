@@ -3,20 +3,22 @@ package api.Users;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 @javax.persistence.Table(name = "users")
 public class User {
     @Id
-    @NotBlank
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     @NotBlank
     private String email;
     private String password;
-    @NotBlank
+    //@NotBlank
     private Integer zip_code;
-    @NotBlank
+    //@NotBlank
     private Integer role_id;
     @NotBlank
     private String username;
