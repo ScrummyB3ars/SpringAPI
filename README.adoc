@@ -106,7 +106,7 @@ It will return the new subscriber object in it's response body if the request wa
 
 ==== DELETE-request
 
-You can DELETE a new via
+You can DELETE a user via
 
 ----
 https://api-toddlr.herokuapp.com/users/delete
@@ -164,3 +164,126 @@ You can the whole list of tips by doing a GET-request to the following urls
 http://api-toddlr.herokuapp.com/interaction_tips
 http://api-toddlr.herokuapp.com/theme_tips
 ----
+
+==== POST-Request
+
+You can POST new tips on the urls
+
+----
+http://api-toddlr.herokuapp.com/interaction_tips/add
+http://api-toddlr.herokuapp.com/theme_tips/add
+----
+
+These require following JSON
+
+[source,json]
+----
+==== Theme-tip
+{
+    "picture": "wolken_1",
+    "tip_content": "content",
+    "rich_language": "true",
+    "circumstances":"clouds",
+    "zill_goal": "blablablagoal",
+    "development_goal":"goals",
+    "themes_id": 1
+}
+
+Tip: See documentation about themes to get the themes_id
+
+==== Interaction-tip
+{
+    "tip_content":"Lorem ipsum content",
+    "add_rich_language": "true",
+    "type_id": 1
+}
+
+Tip: See documentation about interaction types to get the type_id
+
+----
+
+These request will return a 201 CREATED when successful.
+
+==== Delete-request
+
+= NOT IMPLEMENTED YET
+
+You can DELETE a tip via
+
+----
+https://api-toddlr.herokuapp.com/theme_tips/delete
+https://api-toddlr.herokuapp.com/interaction_tips/delete
+----
+
+This request expects a DELETE-request with Content-type: application/json and the following json-body
+
+[source,json]
+----
+{"id": 16}
+----
+
+It will return a 201 HttpResponse ACCEPTED if successful.
+
+=== Themes
+
+==== GET-request
+
+You can get all themes by doing a get request to the following url
+
+----
+https://api-toddlr.herokuapp.com/themes
+----
+
+You will get a list back that looks like this
+
+[source, json]
+----
+[
+    {
+        "id": 0,
+        "name": "weer"
+    },
+    {
+        "id": 1,
+        "name": "techniek"
+    }
+]
+----
+
+==== POST-request
+
+You can add a new theme by doing a POST to the following url
+
+----
+https://api-toddlr.herokuapp.com/themes/add
+----
+
+This request expects a POST-request with Content-type: application/json and the following json-body
+
+[source,json]
+----
+{"name": "newThemeName"}
+----
+
+It will return the new theme object in it's response body if the request was successful.
+
+==== DELETE
+
+= NOT IMPLEMENTED YET
+
+You can DELETE a theme via
+
+----
+https://api-toddlr.herokuapp.com/themes/delete
+----
+
+This request expects a DELETE-request with Content-type: application/json and the following json-body
+
+[source,json]
+----
+{"id": 2}
+----
+
+It will return a 201 HttpResponse ACCEPTED if successful.
+
+

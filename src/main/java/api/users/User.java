@@ -1,6 +1,7 @@
 package api.users;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,9 +17,7 @@ public class User {
     @NotBlank
     private String email;
     private String password;
-    //@NotBlank
     private Integer zip_code;
-    //@NotBlank
     private Integer role_id;
     @NotBlank
     private String username;

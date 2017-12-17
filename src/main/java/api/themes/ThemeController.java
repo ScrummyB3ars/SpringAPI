@@ -13,15 +13,15 @@ public class ThemeController {
 
     @RequestMapping(value= "/themes", method= RequestMethod.GET)
     public ResponseEntity getAllThemes() {
-        return new ResponseEntity(tr.findAll(),HttpStatus.OK);
+        return new ResponseEntity<>(tr.findAll(),HttpStatus.OK);
     }
 
     @RequestMapping(value="/themes/add", method = RequestMethod.POST)
-    public ResponseEntity<Theme> postTheme(@RequestBody Theme t){
+    public ResponseEntity postTheme(@RequestBody Theme t){
         try{
             t.setId(tr.findHighestId() + 1);
             tr.save(t);
-            return new ResponseEntity(t, HttpStatus.OK);
+            return new ResponseEntity<>(t, HttpStatus.CREATED);
         }
         catch(Exception e){
             return ErrorController.ApiError(e);

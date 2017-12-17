@@ -17,24 +17,24 @@ public class SubscriberController {
 
     @RequestMapping(value= "/subscribers", method= RequestMethod.GET)
     public ResponseEntity getSubscribers() {
-        return new ResponseEntity(sr.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(sr.findAll(), HttpStatus.OK);
     }
 
     @RequestMapping(value="**",method = RequestMethod.GET)
     public ResponseEntity getAnythingelse(){
-        return new ResponseEntity("Welcome to the toddlr-api.", HttpStatus.OK);
+        return new ResponseEntity<>("Welcome to the toddlr-api.", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/subscribers/{facebook_id}")
     public ResponseEntity getSingleSubscriber (@PathVariable("facebook_id") int fb_id) {
-        return new ResponseEntity(sr.findSubscriberByFacebook_id(fb_id), HttpStatus.OK );
+        return new ResponseEntity<>(sr.findSubscriberByFacebook_id(fb_id), HttpStatus.OK );
     }
     @RequestMapping(value="/subscribers/add", method = RequestMethod.POST)
     public ResponseEntity postSubscriber(@RequestBody postSubscriber payload){
         try{
             Subscriber s = new Subscriber(sr.findHighestId().longValue() + 1, payload.getFacebook_id(), payload.getAge_group_id());
             sr.save(s);
-            return new ResponseEntity(s, HttpStatus.CREATED);
+            return new ResponseEntity<>(s, HttpStatus.CREATED);
         }
         catch (Exception e) {
             return ErrorController.ApiError(e);

@@ -14,7 +14,7 @@ public class Age_groupController {
     @RequestMapping(value="/age_groups", method = RequestMethod.GET)
     public ResponseEntity getAllAge_Groups(){
         try {
-            return new ResponseEntity(agr.findAll(), HttpStatus.OK);
+            return new ResponseEntity<>(agr.findAll(), HttpStatus.OK);
         }
         catch (Exception e){
            return  ErrorController.ApiError(e);

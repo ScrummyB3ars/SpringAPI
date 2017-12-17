@@ -1,19 +1,20 @@
-package api.themes;
+package api.interaction_types;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@javax.persistence.Table(name = "themes")
-public class Theme {
+@Table(name = "interaction_types")
+public class Interaction_type {
     @Id
     private Long id;
     @NotBlank
     private String name;
 
-    public Theme() {
+    public Interaction_type() {
     }
 
     public Long getId() {

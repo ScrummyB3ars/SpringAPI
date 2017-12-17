@@ -22,7 +22,7 @@ public class UserController {
 
     @RequestMapping(value = "/users/{id}")
     public ResponseEntity getSingleUserById (@PathVariable("id") int id) {
-        return new ResponseEntity(ur.findUserById(id), HttpStatus.OK );
+        return new ResponseEntity<>(ur.findUserById(id), HttpStatus.OK );
     }
 
     @RequestMapping(value="/users/add", method = RequestMethod.POST)
@@ -36,7 +36,7 @@ public class UserController {
             u.setUsername(payload.getUsername());
             u.setId(new Long(ur.findHighestId())+1);
             ur.save(u);
-            return  new ResponseEntity(u, HttpStatus.CREATED);
+            return  new ResponseEntity<>(u, HttpStatus.CREATED);
         }
         catch (Exception e) {
             return ErrorController.ApiError(e);
