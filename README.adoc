@@ -207,8 +207,6 @@ These request will return a 201 CREATED when successful.
 
 ==== Delete-request
 
-= NOT IMPLEMENTED YET
-
 You can DELETE a tip via
 
 ----
@@ -270,8 +268,6 @@ It will return the new theme object in it's response body if the request was suc
 
 ==== DELETE
 
-= NOT IMPLEMENTED YET
-
 You can DELETE a theme via
 
 ----
@@ -286,5 +282,17 @@ This request expects a DELETE-request with Content-type: application/json and th
 ----
 
 It will return a 201 HttpResponse ACCEPTED if successful.
+
+=== Images
+
+==== GET-request
+
+You can GET all an image based on it's names through the following url
+The names are linked to a theme_tip so you need to do a GET on the tip before you can request the image.
+
+----
+https://api-toddlr.herokuapp.com/images/{image_name}
+----
+
 
 
