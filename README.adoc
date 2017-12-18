@@ -125,11 +125,12 @@ It will return a 201 HttpResponse ACCEPTED if successful.
 
 Two different kind of tips: interaction_tips and theme_tips
 
-GET a random tip
+GET a random tip or a random tip specific for a subscriber
 
 ----
 https://api-toddlr.herokuapp.com/interaction_tips/random
 https://api-toddlr.herokuapp.com/theme_tips/random
+https://api-toddlr.herokuapp.com/theme_tips/random?{facebook_id}
 ----
 
 This returns a json-object as the following:
