@@ -49,7 +49,7 @@ It will return the new subscriber object in it's response body if the request wa
 
 ==== DELETE-request
 
-You can DELETE a new via
+You can DELETE a subscriber via
 
 ----
 https://api-toddlr.herokuapp.com/subscribers/delete
