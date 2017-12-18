@@ -121,7 +121,7 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpResponse ACCEPTED if successful.
 
-=== Tips
+== Tips
 
 Two different kind of tips: interaction_tips and theme_tips
 
@@ -223,7 +223,7 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpResponse ACCEPTED if successful.
 
-=== Themes
+== Themes
 
 ==== GET-request
 
@@ -283,7 +283,7 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpResponse ACCEPTED if successful.
 
-=== Images
+== Images
 
 ==== GET-request
 
