@@ -187,7 +187,8 @@ These require following JSON
     "circumstances":"clouds",
     "zill_goal": "blablablagoal",
     "development_goal":"goals",
-    "themes_id": 1
+    "themes_id": 1,
+    "age_group_id": 0
 }
 
 Tip: See documentation about themes to get the themes_id
