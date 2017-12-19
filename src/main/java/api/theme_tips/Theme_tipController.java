@@ -48,6 +48,7 @@ public class Theme_tipController {
     @RequestMapping(value="/theme_tips/add", method = RequestMethod.POST)
     public ResponseEntity<Theme_tip> postThemeTip(@RequestBody Theme_tip tt){
         tt.setId(new Long(ttr.findHighestId())+1);
+        ttr.save(tt);
         return new ResponseEntity<>(tt, HttpStatus.CREATED);
     }
 
