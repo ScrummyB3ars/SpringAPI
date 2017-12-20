@@ -46,8 +46,8 @@ public class UserController {
     @RequestMapping(value="/users/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteUser(@RequestBody String body) throws IOException {
         try{
-            String s = (new ObjectMapper().readTree(body).findValue("email")+"").replace('"', ' ').trim();
-            ur.deleteWithEmail(s);
+            String id = (new ObjectMapper().readTree(body).findValue("id")+"").replace('"', ' ').trim();
+            ur.delete(new Long(Integer.parseInt(id)));
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch (Exception e) {
