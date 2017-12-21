@@ -49,7 +49,7 @@ It will return the new subscriber object in it's response body if the request wa
 
 ==== DELETE-request
 
-You can DELETE a new via
+You can DELETE a subscriber via
 
 ----
 https://api-toddlr.herokuapp.com/subscribers/delete
@@ -121,15 +121,16 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpResponse ACCEPTED if successful.
 
-=== Tips
+== Tips
 
 Two different kind of tips: interaction_tips and theme_tips
 
-GET a random tip
+GET a random tip or a random tip specific for a subscriber
 
 ----
 https://api-toddlr.herokuapp.com/interaction_tips/random
 https://api-toddlr.herokuapp.com/theme_tips/random
+https://api-toddlr.herokuapp.com/theme_tips/random?{facebook_id}
 ----
 
 This returns a json-object as the following:
@@ -186,7 +187,8 @@ These require following JSON
     "circumstances":"clouds",
     "zill_goal": "blablablagoal",
     "development_goal":"goals",
-    "themes_id": 1
+    "themes_id": 1,
+    "age_group_id": 0
 }
 
 Tip: See documentation about themes to get the themes_id
@@ -206,8 +208,6 @@ These request will return a 201 CREATED when successful.
 
 ==== Delete-request
 
-= NOT IMPLEMENTED YET
-
 You can DELETE a tip via
 
 ----
@@ -224,7 +224,7 @@ This request expects a DELETE-request with Content-type: application/json and th
 
 It will return a 201 HttpResponse ACCEPTED if successful.
 
-=== Themes
+== Themes
 
 ==== GET-request
 
@@ -269,8 +269,6 @@ It will return the new theme object in it's response body if the request was suc
 
 ==== DELETE
 
-= NOT IMPLEMENTED YET
-
 You can DELETE a theme via
 
 ----
@@ -285,5 +283,17 @@ This request expects a DELETE-request with Content-type: application/json and th
 ----
 
 It will return a 201 HttpResponse ACCEPTED if successful.
+
+== Images
+
+==== GET-request
+
+You can GET all an image based on it's names through the following url
+The names are linked to a theme_tip so you need to do a GET on the tip before you can request the image.
+
+----
+https://api-toddlr.herokuapp.com/images/{image_name}
+----
+
 
 

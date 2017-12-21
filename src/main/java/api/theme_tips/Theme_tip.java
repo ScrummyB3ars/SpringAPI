@@ -11,7 +11,6 @@ import javax.persistence.Id;
 @javax.persistence.Table(name = "theme_tips")
 public class Theme_tip {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     @NotBlank
     private String picture;
@@ -25,9 +24,7 @@ public class Theme_tip {
     private String ZILL_goal;
     @NotBlank
     private String development_goal;
-    @NotBlank
     private Integer themes_id;
-    @NotBlank
     private Integer age_group_id;
 
     public Theme_tip() {

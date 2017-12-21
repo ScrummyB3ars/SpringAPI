@@ -1,6 +1,8 @@
 package api.theme_tips;
 
 import api.error.ErrorController;
+import api.subscribers.Subscriber;
+import api.subscribers.SubscriberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ import java.util.Random;
 public class Theme_tipController {
     @Autowired
     private Theme_tipRepository ttr;
+    @Autowired
+    private SubscriberRepository sr;
 
     @RequestMapping(value= "/theme_tips", method= RequestMethod.GET)
     public ResponseEntity getAllThemeTips() {
@@ -24,14 +28,20 @@ public class Theme_tipController {
     }
 
     @RequestMapping(value="/theme_tips/random", method = RequestMethod.GET)
-    public ResponseEntity getRandomThemeTip(){
+    public ResponseEntity getRandomThemeTip(@RequestParam(value="facebook_id", defaultValue = "null") String facebook_id){
         try{
-            Integer random = new Random().nextInt((int) ttr.count() +1);
-            Theme_tip t = ttr.findOne(new Long(random));
+            Theme_tip t;
+            if(facebook_id.equals("null")){
+                Integer random = new Random().nextInt((int) ttr.count() +1);
+                t = ttr.findOne(new Long(random));
+            }
+            else {
+                t = ttr.findRandomTheme_Tip(sr.findSubscriberByFacebook_id(facebook_id).getAge_group_id());
+            }
             return new ResponseEntity<>(t, HttpStatus.OK);
         }
         catch(Exception e){
-            return ErrorController.ApiError(e);
+           return ErrorController.ApiError(e);
         }
     }
 
@@ -48,6 +58,7 @@ public class Theme_tipController {
     @RequestMapping(value="/theme_tips/add", method = RequestMethod.POST)
     public ResponseEntity<Theme_tip> postThemeTip(@RequestBody Theme_tip tt){
         tt.setId(new Long(ttr.findHighestId())+1);
+        ttr.save(tt);
         return new ResponseEntity<>(tt, HttpStatus.CREATED);
     }
 

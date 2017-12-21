@@ -26,7 +26,7 @@ public class SubscriberController {
     }
 
     @RequestMapping(value = "/subscribers/{facebook_id}")
-    public ResponseEntity getSingleSubscriber (@PathVariable("facebook_id") int fb_id) {
+    public ResponseEntity getSingleSubscriber (@PathVariable("facebook_id") String fb_id) {
         return new ResponseEntity<>(sr.findSubscriberByFacebook_id(fb_id), HttpStatus.OK );
     }
     @RequestMapping(value="/subscribers/add", method = RequestMethod.POST)
