@@ -45,10 +45,10 @@ public class Theme_tipController {
         }
     }
 
-    @RequestMapping(value="/theme_tips/{id}")
+    @RequestMapping(value="/theme_tips/{id}", method = RequestMethod.GET)
     public ResponseEntity getSingleThemeTipById(@PathVariable("id") int id){
         try {
-
+            return new ResponseEntity<>(ttr.findOne(new Long(id)), HttpStatus.OK);
         }
         catch(Exception e){
             return ErrorController.ApiError(e);
