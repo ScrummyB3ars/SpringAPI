@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Table(name = "interaction_types")
 public class Interaction_type {
     @Id
+
     private Long id;
     @NotBlank
     private String name;

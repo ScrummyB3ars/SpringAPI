@@ -2,6 +2,7 @@ package api.interaction_tips;
 
 import api.error.ErrorController;
 import api.theme_tips.Theme_tip;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,8 +37,21 @@ public class Interaction_tipController {
     }
 
     @RequestMapping(value="/interaction_tips/add", method = RequestMethod.POST)
-    public ResponseEntity postThemeTip(@RequestBody Interaction_tip it){
+    public ResponseEntity postInteractionTip(@RequestBody Interaction_tip it){
         it.setId(itr.findHighestId()+1);
+        itr.save(it);
         return new ResponseEntity<>(it, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="/interaction_tips/delete", method = RequestMethod.DELETE)
+    public ResponseEntity deleteInteractionTip(@RequestBody String body){
+        try {
+            String s = (new ObjectMapper().readTree(body).findValue("id")+"").replace('"', ' ').trim();
+            itr.delete(new Long(Integer.parseInt(s)));
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch(Exception e){
+            return ErrorController.ApiError(e);
+        }
     }
 }

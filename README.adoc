@@ -196,7 +196,7 @@ Tip: See documentation about themes to get the themes_id
 ==== Interaction-tip
 {
     "tip_content":"Lorem ipsum content",
-    "add_rich_language": "true",
+    "add_rich_language": 0,
     "type_id": 1
 }
 

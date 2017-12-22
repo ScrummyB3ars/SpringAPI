@@ -20,7 +20,7 @@ public class Interaction_typeController {
     @RequestMapping(value="/interaction_types/add", method = RequestMethod.POST)
     public ResponseEntity postInteractionType(@RequestBody Interaction_type it){
         try{
-            it.setId(itr.findHighestId() + 1);
+            //it.setId(itr.findHighestId() + 1);
             itr.save(it);
             it.getId();
             return new ResponseEntity<>(it, HttpStatus.CREATED);

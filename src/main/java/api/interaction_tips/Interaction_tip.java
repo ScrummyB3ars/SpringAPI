@@ -14,9 +14,7 @@ public class Interaction_tip {
     private Long id;
     @NotBlank
     private String tip_content;
-    @NotBlank
     private Integer add_rich_language;
-    @NotBlank
     private Integer type_id;
 
     public Interaction_tip() {
