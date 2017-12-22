@@ -166,6 +166,12 @@ http://api-toddlr.herokuapp.com/interaction_tips
 http://api-toddlr.herokuapp.com/theme_tips
 ----
 
+Single tips can be found via
+----
+http://api-toddlr.herokuapp.com/interaction_tips/{id}
+http://api-toddlr.herokuapp.com/theme_tips/{id}
+----
+
 ==== POST-Request
 
 You can POST new tips on the urls

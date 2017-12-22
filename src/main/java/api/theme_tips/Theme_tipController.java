@@ -45,6 +45,16 @@ public class Theme_tipController {
         }
     }
 
+    @RequestMapping(value="/theme_tips/{id}", method = RequestMethod.GET)
+    public ResponseEntity getSingleThemeTipById(@PathVariable("id") int id){
+        try {
+            return new ResponseEntity<>(ttr.findOne(new Long(id)), HttpStatus.OK);
+        }
+        catch(Exception e){
+            return ErrorController.ApiError(e);
+        }
+    }
+
     @RequestMapping(value="/theme_tips/add", method = RequestMethod.POST)
     public ResponseEntity<Theme_tip> postThemeTip(@RequestBody Theme_tip tt){
         tt.setId(new Long(ttr.findHighestId())+1);

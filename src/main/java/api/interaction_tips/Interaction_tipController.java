@@ -5,10 +5,7 @@ import api.theme_tips.Theme_tip;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.ws.Response;
@@ -32,6 +29,16 @@ public class Interaction_tipController {
             return new ResponseEntity<>(it, HttpStatus.OK);
         }
         catch(Exception e){
+            return ErrorController.ApiError(e);
+        }
+    }
+
+    @RequestMapping(value="/interaction_tips/{id}", method= RequestMethod.GET)
+    public ResponseEntity getInteractionTipById(@PathVariable("id") Long id){
+        try {
+            return new ResponseEntity<>(itr.findOne(id), HttpStatus.OK);
+        }
+        catch (Exception e){
             return ErrorController.ApiError(e);
         }
     }
